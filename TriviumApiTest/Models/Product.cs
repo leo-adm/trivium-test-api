@@ -1,9 +1,15 @@
-﻿namespace TriviumApiTest.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TriviumApiTest.Models
 {
     public class Product
     {
         public int Id { get; set; }
+
+        [Column("Nome")]
         public string Name { get; set; }
+
+        [Column("Preco")]
         public double Price { get; set; }
         public List<PurchaseItem> PurchaseItems { get; set; } = new List<PurchaseItem>();
         public int TotalPurchasesIncluded => GetTotalPurchasesIncluded();

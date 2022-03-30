@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TriviumApiTest.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,9 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IClientsRepository, MockClientsRepository>();
+builder.Services.AddScoped<IClientsRepository, ClientsRepository>();
 builder.Services.AddScoped<IProductsRepository, MockProductsRepository>();
 builder.Services.AddScoped<IPurchasesRepository, MockPurchasesRepository>();
+
+builder.Services.AddDbContext<TriviumTestApiDbContext>(opt =>
+    opt.UseSqlite("Filename=sqlite.db"));
 
 var app = builder.Build();
 

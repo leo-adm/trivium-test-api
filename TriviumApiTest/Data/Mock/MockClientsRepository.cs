@@ -6,32 +6,32 @@ namespace TriviumApiTest.Data
     {
         public Client GetClientById(int id)
         {
-            return new Client() { Id = id, Nome = $"Cliente{id}", Endereco = $"Endereco{id}", Telefone = $"Telefone{id}" };
+            return new Client() { Id = id, Name = $"Cliente{id}", Address = $"Endereco{id}", PhoneNumber = $"Telefone{id}" };
         }
 
         public IEnumerable<Client> GetClients()
         {
             return new List<Client>()
             {
-                new Client() { Id = 1, Nome = "Cliente1", Endereco = "Endereco1", Telefone = "Telefone1" },
-                new Client() { Id = 2, Nome = "Cliente2", Endereco = "Endereco2", Telefone = "Telefone2" },
-                new Client() { Id = 3, Nome = "Cliente3", Endereco = "Endereco3", Telefone = "Telefone3" },
+                new Client() { Id = 1, Name = "Cliente1", Address = "Endereco1", PhoneNumber = "Telefone1" },
+                new Client() { Id = 2, Name = "Cliente2", Address = "Endereco2", PhoneNumber = "Telefone2" },
+                new Client() { Id = 3, Name = "Cliente3", Address = "Endereco3", PhoneNumber = "Telefone3" },
             };
         }
 
-        public void CreateClient(Client client)
+        public bool CreateClient(Client client)
         {
-            // DO NOTHING
+            return true;
         }
 
-        public void UpdateClient(Client client)
+        public bool UpdateClient(Client client)
         {
-            // DO NOTHING
+            return true;
         }
 
-        public void DeleteClient(Client client)
+        public bool DeleteClient(int id)
         {
-            // DO NOTHING
+            return true;
         }
 
         public IEnumerable<Purchase> GetPurchasesByClientId(int clientId)

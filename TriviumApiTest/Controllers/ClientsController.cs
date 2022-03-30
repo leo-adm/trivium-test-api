@@ -31,33 +31,53 @@ namespace TriviumApiTest.Controllers
         public ActionResult<Client> GetById(int id)
         {
             var client = _repository.GetClientById(id);
+
+            if (client == null)
+                return new NotFoundResult();
+
             return new OkObjectResult(client);
         }
 
         [HttpPost(Name = "CreateClient")]
         public IActionResult Create(Client client)
         {
-            _repository.CreateClient(client);
-            return new OkResult();
+            var successful = _repository.CreateClient(client);
+
+            if (successful)
+                return new OkResult();
+
+            return new BadRequestResult();
         }
 
         [HttpPut(Name = "UpdateClient")]
         public IActionResult Update(Client client)
         {
-            _repository.UpdateClient(client);
-            return new OkResult();
+            var successful = _repository.UpdateClient(client);
+
+            if(successful)
+                return new OkResult();
+
+            return new BadRequestResult();
         }
 
         [HttpDelete(Name = "DeleteClient")]
-        public IActionResult Delete(Client client)
+        public IActionResult Delete(int id)
         {
-            _repository.DeleteClient(client);
-            return new OkResult();
+            var successful = _repository.DeleteClient(id);
+
+            if (successful)
+                return new OkResult();
+
+            return new BadRequestResult();
         }
 
         [HttpGet("{id}/purchases", Name = "GetPurchasesByClientId")]
         public ActionResult<IEnumerable<Purchase>> GetPurchases(int id)
         {
+            var client = _repository.GetClientById(id);
+            if (client == null)
+                return new NotFoundResult();
+
             var purchases = _repository.GetPurchasesByClientId(id);
             return new OkObjectResult(purchases);
         }
@@ -65,6 +85,10 @@ namespace TriviumApiTest.Controllers
         [HttpGet("{id}/purchases/top-products", Name = "GetTopProducts")]
         public ActionResult<IEnumerable<Purchase>> GetTop5(int id)
         {
+            var client = _repository.GetClientById(id);
+            if (client == null)
+                return new NotFoundResult();
+
             var products = _repository.GetTopProductsBoughtByClient(id, 5);
 
             var mappedProducts = products.ToList().ConvertAll(x => new

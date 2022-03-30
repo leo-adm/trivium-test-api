@@ -6,9 +6,9 @@ namespace TriviumApiTest.Data
     {
         IEnumerable<Client> GetClients();
         Client GetClientById(int id);
-        void CreateClient(Client client);
-        void UpdateClient(Client client);
-        void DeleteClient(Client client);
+        bool CreateClient(Client client);
+        bool UpdateClient(Client client);
+        bool DeleteClient(int id);
         IEnumerable<Purchase> GetPurchasesByClientId(int clientId);
         IEnumerable<Product> GetTopProductsBoughtByClient(int id, int limit);
     }
