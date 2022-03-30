@@ -81,25 +81,26 @@ A tabela CompraItem guarda as seguintes informações:
 
 #### Requisitos bônus
 
-1. **Crie os seguinte end-points extras:**
+1. **Crie os seguinte end-points extras:**  
+
 1.1.: **Busca de Compras para um Cliente**  
 
--- Resposta deve conter uma lista de compras e cada compra precisa 
+- Resposta deve conter uma lista de compras e cada compra precisa 
 conter a sua lista de items e um preço total da compra.  
 
 1.2.: **Busca de Compras para um Produto**  
 
--- Resposta deve conter total de compras feitas pelo produto produto 
+- Resposta deve conter total de compras feitas pelo produto produto 
 enviado e preço total arrecadado.  
 
 1.3.: **Busca de Compras por Produto**  
 
--- Resposta deve conter uma lista de produtos e cada produto deve 
+- Resposta deve conter uma lista de produtos e cada produto deve 
 conter total de compras feitas e preço total arrecadado.  
 
 1.4.: **Busca de Produtos mais comprados para um Cliente**  
 
--- Buscar os 5 produtos mais comprados por um cliente específico.
+- Buscar os 5 produtos mais comprados por um cliente específico.
 
 
 
